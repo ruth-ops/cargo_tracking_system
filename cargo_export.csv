@@ -1,0 +1,4 @@
+ID, Tracking Number, Sender       , Receiver  , Phone        , Origin , Destination, Weight, Description  , Status  , Timestamp
+ 1, TRK-3F5DB479   , alice wanjiku, bob omondi, +254712345678, NAIROBI, NAKURU     ,    0.2, Fragile goods, Received, 
+ 2, TRK-C128E7D7   , alice wanjiku, bob omondi, +254712345678, NAIROBI, NAKURU     ,    0.2, Fragile goods, Received, 2026-11-11 06:26:11
+ 3, TRK-D37BAE98   , alice wanjiku, bob omondi, +254712345678, NAIROBI, NAKURU     ,    0.2, Fragile goods, Received, 
