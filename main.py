@@ -1,7 +1,7 @@
 import streamlit as st
 from db import setup_db, CargoApp
 
-# 1. Initialize Database and App 
+
 setup_db()
 app = CargoApp()
 
@@ -14,50 +14,45 @@ customer_tab, staff_tab = st.tabs(["Customer Tracking", "Staff Operations"])
 
 
 # TAB 1: CUSTOMER TRACKING (READ)
-
 with customer_tab:
     st.header("Track Your Parcel")
     
-    # Input box for tracking number
-    track_no = st.text_input("Enter Tracking Number (e.g., TRK-1234AB)").strip().upper()
+    # box for tracking number
+    track_no = st.text_input("Enter Tracking Number (e.g., TRK-1234AB)", autocomplete ="off").strip().upper()
 
     if st.button("Search Parcel"):
-
         if not track_no:
             st.warning("Please enter a tracking number.")
         else:
-            # database lookup method
+          
             parcel = app.lookup_parcel(track_no)
             
-parcel = app.lookup_parcel(track_no)
-if parcel:
-  
-    tracking_id = parcel[1]
-    sender = parcel[2]
-    receiver = parcel[3]
-    phone = parcel[4]
-    origin = parcel[5]
-    destination = parcel[6]
-    weight = parcel[7]
-    description = parcel[8]
-    status = parcel[9]
-    updated_at = parcel[10]
-    
-    st.success("Parcel Found!")
+            if parcel:
+                tracking_id = parcel[1]
+                sender = parcel[2]
+                receiver = parcel[3]
+                phone = parcel[4]
+                origin = parcel[5]
+                destination = parcel[6]
+                weight = parcel[7]
+                description = parcel[8]
+                status = parcel[9]
+                updated_at = parcel[10]
+                
+                st.success("Parcel Found!")
 
-    st.success("Parcel Found!")
-    st.write(f"Tracking Number: {tracking_id}")
-    st.write(f"Status: {status}")
-    st.write(f"Route: {origin} to {destination}")
-    st.write(f"Sender: {sender} | Receiver: {receiver} ({phone})")
-    st.write(f"Weight: {weight} kg")
-    st.write(f"Description: {description}")
-    st.caption(f"Last Updated: {updated_at}")
-else:
-    st.error("No parcel found with this tracking number. ")   
+                st.write(f"Tracking Number: {tracking_id}")
+                st.write(f"Status: {status}")
+                st.write(f"Route:{origin} to {destination}")
+                st.write(f"Sender:{sender} | Receiver: {receiver} ({phone})")
+                st.write(f"Weight: {weight} kg")
+                st.write(f"Description: {description}")
+                st.caption(f"Last Updated: {updated_at or 'just logged (No updates yet)'}")
+            else:
+                st.error("No parcel found with this tracking number.")
+
 
 # TAB 2: STAFF OPERATIONS (CREATE, UPDATE, DELETE, EXPORT)
-
 with staff_tab:
     st.header("Staff Dashboard")
     
@@ -66,18 +61,18 @@ with staff_tab:
         ["Log New Parcel", "Update Parcel Status", "Delete Parcel Record", "Export Dispatches to CSV"]
     )
 
-    #  CREATE: Log New Parcel
+    # CREATE: Log New Parcel
     if action == "Log New Parcel":
         st.subheader("Log New Cargo Consignment")
         
-        with st.form("parcel_form"):
-            sender = st.text_input("Sender Name")
-            receiver = st.text_input("Receiver Name")
-            phone = st.text_input("Receiver Phone")
-            origin = st.text_input("Origin Hub")
-            destination = st.text_input("Destination")
+        with st.form("parcel_form", clear_on_submit=True):
+            sender = st.text_input("Sender Name", autocomplete="off")
+            receiver = st.text_input("Receiver Name", autocomplete="off")
+            phone = st.text_input("Receiver Phone", autocomplete="off")
+            origin = st.text_input("Origin Hub",autocomplete="off" )
+            destination = st.text_input("Destination",autocomplete="off" )
             weight = st.number_input("Weight (kg)", min_value=0.1, step=0.1)
-            description = st.text_input("Package Description")
+            description = st.text_input("Package Description", autocomplete="off")
 
             submitted = st.form_submit_button("Save Dispatch")
 
@@ -94,7 +89,7 @@ with staff_tab:
                         description.strip(),
                     )
                     if tracking_id:
-                        st.success(f"Dispatch logged successfully! Your Tracking Number is: **{tracking_id}**")
+                        st.success(f"Dispatch logged successfully! Your Tracking Number is: {tracking_id}")
                     else:
                         st.error("Failed to save dispatch to database.")
                 else:
@@ -127,7 +122,7 @@ with staff_tab:
     elif action == "Delete Parcel Record":
         st.subheader("Remove Parcel Record")
         
-        delete_track = st.text_input("Enter Tracking Number to Delete").strip().upper()
+        delete_track = st.text_input("Enter Tracking Number to Delete", autocomplete="off").strip().upper()
 
         if st.button("Delete Record"):
             if not delete_track:
@@ -151,6 +146,7 @@ with staff_tab:
                 st.success("Exported successfully to cargo_export.csv in your project folder!")
             else:
                 st.error("Could not export data.")
+
 
 
 
