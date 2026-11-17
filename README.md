@@ -49,6 +49,9 @@ No known bugs at this time, input validation is configured to catch invalid weig
 ## Support and contact details
 If you run into any issues or have questions regarding this project, feel free to submit an issue on the Github repository or reach out via email at **ruthmacharia880@gmail.com**.
 
+## Presentation Slides
+* **View the full project:** [Nexus Cargo Pipeline presentation] ([https://docs.google.com/presentation/d/16ZIEt8T6Gbd6Qr9zT8lelNNsWx5huDZ81G_6YiALn4Y/edit?usp=sharing])
+
 ### License
 This project is licensed under the MIT License. copyright(c)2026 Ruth Macharia.
  
