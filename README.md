@@ -13,18 +13,20 @@
 * **Staff Operations Dashboard:** Full CRUD functionality to log new parcels, update transit statuses, and delete records.
 * **Persistent SQLite Storage:** saves all dispatch data safely in a local relational database ('nexus_cargo.db')
 * **CSV Ledger Export:** Exports all dispatch records into an Excel-ready 'cargo_export.csv' file.
+![Customer Tracking] (screenshots/customer.png)
+![Staff Dashboard] (screenshots/staff.png)
 
 ## Setup & Installation requirements
 1. **Clone this repository to your local computer:**
 '''bash
-git clone https://github.com/ruth-ops/cargo_tracking_system/blob/main/db.py
+git clone https://github.com
 cd capstone_project
 '''
 
 2. ** Create and activate a python virtual environment:**
 '''bash
-python -m venv venv
-Source venv/Scripts/activate
+python -m venv .venv
+Source .venv/Scripts/activate
 '''
 
 3. **install required dependencies:**

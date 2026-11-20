@@ -9,7 +9,7 @@ app = CargoApp()
 st.title("🚛 Nexus Cargo Pipeline")
 st.write("Welcome to the Local Delivery & Internal Cargo Tracking Portal")
 
-# 3. Creating Two Main Tabs (Customer vs Staff)
+
 customer_tab, staff_tab = st.tabs(["Customer Tracking", "Staff Operations"])
 
 
@@ -17,7 +17,7 @@ customer_tab, staff_tab = st.tabs(["Customer Tracking", "Staff Operations"])
 with customer_tab:
     st.header("Track Your Parcel")
     
-    # box for tracking number
+    #  tracking number
     track_no = st.text_input("Enter Tracking Number (e.g., TRK-1234AB)", autocomplete ="off").strip().upper()
 
     if st.button("Search Parcel"):
@@ -52,7 +52,7 @@ with customer_tab:
                 st.error("No parcel found with this tracking number.")
 
 
-# TAB 2: STAFF OPERATIONS (CREATE, UPDATE, DELETE, EXPORT)
+# TAB 2: STAFF OPERATIONS 
 with staff_tab:
     st.header("Staff Dashboard")
     
