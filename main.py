@@ -5,7 +5,7 @@ from db import setup_db, CargoApp
 setup_db()
 app = CargoApp()
 
-# 2. Page Title
+# Title
 st.title("🚛 Nexus Cargo Pipeline")
 st.write("Welcome to the Local Delivery & Internal Cargo Tracking Portal")
 
@@ -13,7 +13,7 @@ st.write("Welcome to the Local Delivery & Internal Cargo Tracking Portal")
 customer_tab, staff_tab = st.tabs(["Customer Tracking", "Staff Operations"])
 
 
-# TAB 1: CUSTOMER TRACKING (READ)
+# CUSTOMER TRACKING
 with customer_tab:
     st.header("Track Your Parcel")
     
@@ -52,7 +52,7 @@ with customer_tab:
                 st.error("No parcel found with this tracking number.")
 
 
-# TAB 2: STAFF OPERATIONS 
+# STAFF TAB
 with staff_tab:
     st.header("Staff Dashboard")
     
@@ -61,7 +61,7 @@ with staff_tab:
         ["Log New Parcel", "Update Parcel Status", "Delete Parcel Record", "Export Dispatches to CSV"]
     )
 
-    # CREATE: Log New Parcel
+    # New Parcel
     if action == "Log New Parcel":
         st.subheader("Log New Cargo Consignment")
         
@@ -95,7 +95,7 @@ with staff_tab:
                 else:
                     st.warning("Please enter both Sender and Receiver names.")
 
-    # UPDATE: Change Status
+    # Change Status
     elif action == "Update Parcel Status":
         st.subheader("Update Transit Status")
         
@@ -118,7 +118,7 @@ with staff_tab:
                 else:
                     st.error("Tracking number not found.")
 
-    # DELETE: Remove Record
+    # Remove Record
     elif action == "Delete Parcel Record":
         st.subheader("Remove Parcel Record")
         
@@ -137,7 +137,7 @@ with staff_tab:
                 else:
                     st.error("Tracking number not found.")
 
-    # EXPORT: CSV Report
+    # CSV Report
     elif action == "Export Dispatches to CSV":
         st.subheader("Export Dispatch Ledger")
         

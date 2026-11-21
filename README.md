@@ -13,11 +13,14 @@
 * **Staff Operations Dashboard:** Full CRUD functionality to log new parcels, update transit statuses, and delete records.
 * **Persistent SQLite Storage:** saves all dispatch data safely in a local relational database ('nexus_cargo.db')
 * **CSV Ledger Export:** Exports all dispatch records into an Excel-ready 'cargo_export.csv' file.
+* **CSV Ledger Exports all
+
 ![Customer Tracking] (screenshots/customer.png)
+
 ![Staff Dashboard] (screenshots/staff.png)
 
 ## Setup & Installation requirements
-1. **Clone this repository to your local computer:**
+1. Clone this repository to your local computer:
 '''bash
 git clone https://github.com
 cd capstone_project
